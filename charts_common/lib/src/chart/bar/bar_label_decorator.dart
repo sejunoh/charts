@@ -338,8 +338,13 @@ class BarLabelDecorator<D> extends BarRendererDecorator<D> {
           labelX = bounds.left - labelPadding;
           labelElement.textDirection = TextDirection.rtl;
         } else {
-          labelX = bounds.right + labelPadding;
-          labelElement.textDirection = TextDirection.ltr;
+          if(rtl) {
+            labelX = bounds.left; // bounds.right + labelPadding
+            labelElement.textDirection = TextDirection.rtl; // ltr
+          } else {
+            labelX = bounds.right + labelPadding;
+            labelElement.textDirection = TextDirection.ltr;
+          }
         }
       }
 
